@@ -1,6 +1,6 @@
 {
   "name": "hr-net-ui",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -9,7 +9,9 @@
     "build": "rollup -c --bundleConfigAsCjs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepublish": "npm run build && tsc",
+    "publish": "publish --access public"
   },
   "author": "",
   "license": "ISC",
