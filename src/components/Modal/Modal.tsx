@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { FC, useEffect, useState, useRef } from "react";
 import "./modal.css";
 import { ModalProps } from "./Modal.types";
 
-export default function Modal({ open, onClose, children }: ModalProps) {
+const Modal: FC<ModalProps> = ({ open, onClose, children }) => {
   const [modalClassName, setModalClassName] = useState("modal");
   const handleClose = () => {
     onClose();
@@ -41,4 +41,6 @@ export default function Modal({ open, onClose, children }: ModalProps) {
       </div>
     </div>
   );
-}
+};
+
+export default Modal;
