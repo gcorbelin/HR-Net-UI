@@ -9,9 +9,7 @@
     "build": "rollup -c --bundleConfigAsCjs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "prepublish": "npm run build && tsc",
-    "publish": "publish --access public"
+    "build-storybook": "storybook build"
   },
   "author": "",
   "license": "ISC",
