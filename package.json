@@ -1,7 +1,11 @@
 {
   "name": "hr-net-ui",
   "version": "1.0.4",
-  "description": "",
+  "description": "A cmodal component used for HR Net OpenclassRooms' project",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gcorbelin/HR-Net-UI"
+  },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -11,9 +15,21 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "ui",
+    "react",
+    "library",
+    "tutorial",
+    "learning",
+    "educational",
+    "example",
+    "beginner-friendly",
+    "practice"
+  ],
+  "author": "gcorbelin",
+  "license": "MIT",
   "dependencies": {
+    "@rollup/plugin-terser": "^0.4.3",
     "@types/styled-components": "^5.1.26"
   },
   "devDependencies": {
@@ -32,7 +48,6 @@
     "rollup": "^3.28.0",
     "rollup-plugin-dts": "^5.3.1",
     "rollup-plugin-import-css": "^3.3.1",
-    "rollup-plugin-minification": "^0.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "storybook": "^7.2.3",
     "styled-components": "^6.0.7",
