@@ -1,12 +1,21 @@
-import React, { FC, useEffect, useState, useRef } from "react";
+import React, { FC, useEffect, useState, useRef, useCallback } from "react";
 import "./modal.css";
 import { ModalProps } from "./Modal.types";
 
 const Modal: FC<ModalProps> = ({ open, onClose, children }) => {
   const [modalClassName, setModalClassName] = useState("modal");
-  const handleClose = () => {
+  const handleCloseOutside = useCallback(
+    (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      if ((event.target as HTMLDivElement).classList.contains("modal")) {
+        onClose();
+      }
+    },
+    [onClose]
+  );
+
+  const handleClose = useCallback(() => {
     onClose();
-  };
+  }, [onClose]);
 
   const modalRef = useRef(null);
 
@@ -18,19 +27,27 @@ const Modal: FC<ModalProps> = ({ open, onClose, children }) => {
   }, [open]);
 
   // Handle 'Escape' key pressed
-  const handleEscape = function (event: KeyboardEvent) {
-    var key = event.code || event.which || event.keyCode;
+  const handleEscape = useCallback(
+    (event: KeyboardEvent) => {
+      var key = event.code || event.which || event.keyCode;
 
-    if ((key === "Escape" || key === 27) && open) {
-      handleClose();
-      event.stopPropagation();
-    }
-  };
+      if ((key === "Escape" || key === 27) && open) {
+        onClose();
+        event.stopPropagation();
+      }
+    },
+    [handleClose, open]
+  );
   // Listen to keyup event
-  document.addEventListener("keyup", (event) => handleEscape(event));
+  useEffect(() => {
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [handleEscape]);
 
   return (
-    <div className={modalClassName} ref={modalRef}>
+    <div className={modalClassName} ref={modalRef} onClick={handleCloseOutside}>
       <div className="modal-content" role="dialog" aria-modal="true">
         {onClose && (
           <button className="modal-close" onClick={handleClose}>

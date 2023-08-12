@@ -12,7 +12,7 @@ export default meta;
 type Story = StoryObj<typeof Modal>;
 
 export const DefaultCase: Story = (args) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(args.open);
   const handleClose = () => {
     setIsOpen(false);
   };
@@ -22,13 +22,16 @@ export const DefaultCase: Story = (args) => {
 
   return (
     <Fragment>
-      <button type="button" onClick={() => handleOpen()}>Open modal</button>
+      <button type="button" onClick={() => handleOpen()}>
+        Open modal
+      </button>
       <Modal onClose={handleClose} open={isOpen}>
-        {args.text}
+        {args.children}
       </Modal>
     </Fragment>
-  )
+  );
 };
 DefaultCase.args = {
-  text: "Modal content",
+  children: <p>Modal content</p>,
+  open: false,
 };
