@@ -1,7 +1,7 @@
 {
   "name": "hr-net-ui",
   "version": "1.0.7",
-  "description": "A cmodal component used for HR Net OpenclassRooms' project",
+  "description": "A set of UI components used for HR Net OpenclassRooms' project",
   "repository": {
     "type": "git",
     "url": "https://github.com/gcorbelin/HR-Net-UI"
